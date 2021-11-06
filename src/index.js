@@ -1,3 +1,5 @@
+import './styles/index.scss';
+
 const words = ['this', 'is', 'my'];
 const anotherWords = [...words, 'words'];
 
