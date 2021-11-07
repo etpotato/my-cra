@@ -1,19 +1,24 @@
 const path = require("path");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-let mode = "development";
-let target = "web";
+const isProd = process.env.NODE_ENV === "production";
 
-if (process.env.NODE_ENV === "production") {
-  mode = "production";
-  target = "browserslist";
-}
+const plugins = [
+  new CleanWebpackPlugin(),
+  new MiniCssExtractPlugin(),
+  new HtmlWebpackPlugin({
+    template: "./src/index.html",
+  }),
+];
+
+if (process.env.SERVE) plugins.push(new ReactRefreshWebpackPlugin());
 
 module.exports = {
-  mode: mode,
-  target: target,
+  mode: isProd ? "production" : "development",
+  target: isProd ? "browserslist" : "web",
   output: {
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "img/[hash][ext][query]",
@@ -37,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.jsx?$/i,
+        test: /\.[jt]sx?$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -53,13 +58,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
-  ],
+  plugins,
   resolve: {
     extensions: [".js", ".jsx"],
   },
