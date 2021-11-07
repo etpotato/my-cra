@@ -1,7 +1,4 @@
-import './styles/index.scss';
+import { render } from "react-dom";
+import App from "./components/App";
 
-const words = ['this', 'is', 'my'];
-const anotherWords = [...words, 'words'];
-
-console.log(words.join(' '));
-console.log(anotherWords.join(' '));
+render(<App />, document.getElementById("root"));
