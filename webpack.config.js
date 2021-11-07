@@ -12,10 +12,13 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   mode: mode,
   target: target,
+  output: {
+    assetModuleFilename: "img/[hash][ext][query]",
+  },
   module: {
     rules: [
       {
-        test: /\.s([ac]|c)ss$/,
+        test: /\.s([ac]|c)ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
@@ -31,11 +34,19 @@ module.exports = {
         ],
       },
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif|webp)$/i,
+        type: 'asset',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       },
     ],
   },
