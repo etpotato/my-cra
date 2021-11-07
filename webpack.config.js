@@ -21,7 +21,7 @@ module.exports = {
   target: isProd ? "browserslist" : "web",
   output: {
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "img/[hash][ext][query]",
+    assetModuleFilename: "[hash][ext][query]",
   },
   module: {
     rules: [
@@ -50,11 +50,17 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpe?g|gif|webp)$/i,
-        type: 'asset',
+        type: "asset",
+        generator: {
+          filename: "img/[hash][ext][query]",
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[base]",
+        },
       },
     ],
   },

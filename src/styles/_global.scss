@@ -1,3 +1,19 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: "OpenSans", "Arial", sans-serif;
+  line-height: 32px;
+  color: crimson;
+  background-color: lightblue;
+  animation-name: fontFlow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
@@ -12,4 +28,13 @@ img {
   background-repeat: no-repeat;
   background-size: 100%;
   background-image: url("../img/jpeg.jpg");
+}
+
+@keyframes fontFlow {
+  from {
+    font-stretch: 100%;
+  }
+  to {
+    font-stretch: 75%;
+  }
 }
