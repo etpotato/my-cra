@@ -82,4 +82,5 @@ module.exports = {
     hot: true,
     port: 3000,
   },
+  stats: isProd ? 'normal' : 'minimal',
 };
