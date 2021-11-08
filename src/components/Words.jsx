@@ -4,7 +4,7 @@ const words = ['this', 'is', 'my'];
 const anotherWords = [...words, 'words'];
 
 export default function Words() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const handleCountClick = (evt) => {
     evt.preventDefault();
     setCount((state) => state + 1);
@@ -12,8 +12,13 @@ export default function Words() {
 
   return (
     <div>
-      <p>{ anotherWords.join(' ') }</p>
-      <button onClick={handleCountClick} type="button">{count}</button>
+      <p className="animate-font stagger1">{ anotherWords.join(' ') }</p>
+      <button onClick={handleCountClick} type="button">Greetings!</button>
+      <p className="animate-font stagger2">
+        Yuo prezet di buton&ensp;
+        <span style={{ color: 'royalblue' }}>{count}</span>
+        timez
+      </p>
     </div>
   );
 }
