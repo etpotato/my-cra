@@ -3,11 +3,11 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-family: "OpenSans", "Arial", sans-serif;
+  font-family: OpenSans, Arial, sans-serif;
   line-height: 32px;
   color: crimson;
   background-color: lightblue;
-  animation-name: fontFlow;
+  animation-name: font-flow;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -30,10 +30,11 @@ img {
   background-image: url("../img/jpeg.jpg");
 }
 
-@keyframes fontFlow {
+@keyframes font-flow {
   from {
     font-stretch: 100%;
   }
+
   to {
     font-stretch: 75%;
   }

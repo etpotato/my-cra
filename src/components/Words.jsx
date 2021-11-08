@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const words = ["this", "is", "my"];
-const anotherWords = [...words, "words"];
+const words = ['this', 'is', 'my'];
+const anotherWords = [...words, 'words'];
 
-export default function Words () {
+export default function Words() {
   const [count, setCount] = useState(1);
   const handleCountClick = (evt) => {
     evt.preventDefault();
-    setCount(count => count + 1);
+    setCount((state) => state + 1);
   };
+
   return (
     <div>
-      <p>{ anotherWords.join(" ") }</p>
-      <button onClick={ handleCountClick } type="button">{ count }</button>
+      <p>{ anotherWords.join(' ') }</p>
+      <button onClick={handleCountClick} type="button">{count}</button>
     </div>
   );
-};
+}
