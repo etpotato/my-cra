@@ -13,8 +13,12 @@ const plugins = [
   new StylelintPlugin(),
   new ESLintWebpackPlugin({
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    failOnError: isProd,
+    quiet: !isProd,
   }),
-  new MiniCssExtractPlugin(),
+  new MiniCssExtractPlugin({
+    filename: '[name].[contenthash].css',
+  }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
   }),
@@ -26,6 +30,7 @@ module.exports = {
   mode: isProd ? 'production' : 'development',
   target: isProd ? 'browserslist' : 'web',
   output: {
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: '[hash][ext][query]',
   },
